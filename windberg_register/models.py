@@ -138,8 +138,7 @@ class Start(models.Model):
 
 class Version(models.Model):
     date = models.DateField()
-    post_end = models.DateField(auto_now=True, default=datetime.datetime.now())
-    net_end = models.DateField(auto_now=True, default=datetime.datetime.now())
+    net_end = models.DateField()
     starts = models.ManyToManyField(Start)
 
     def _sub_date(self, diff):
