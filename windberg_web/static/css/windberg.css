@@ -91,9 +91,8 @@ h3 {
    padding-top: 5px;
 }
 
-table.starttable {
-    width: 90%;
-    margin-left: 5%;
+table {
+    font-size: 14px;
 }
 
 table.starttable tbody>tr>td {
@@ -101,4 +100,8 @@ table.starttable tbody>tr>td {
 }
 table.starttable tbody>tr.topborder>td {
     border-top: 1px solid #ddd;
+}
+
+div.container.content {
+    padding-bottom: 20px;
 }
