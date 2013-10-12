@@ -1,0 +1,25 @@
+<table class="table table-condensed starttable">
+    <thead>
+    <tr>
+        <th>Startzeit</th>
+        <th>Strecke</th>
+        <th>Beschreibung</th>
+        <th>Jahrgang</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for start in starts %}
+        <tr class="topborder">
+            <td class="{% cycle 'none' 'active' as rowcolors %}" rowspan="{{ start.runs.all|length }}">{{ start.start_time|time:"H.i" }}</td>
+            {% for run in  start.runs.all %}
+                {% if forloop.first %}
+                    <td class="{{ rowcolors }}" rowspan="{{ start.runs.all|length }}">{{ run.distance }}m</td>{% else %}
+                    <tr>{% endif %}
+                <td class="{{ rowcolors }}">{{ run.name }}</td>
+                <td class="{{ rowcolors }}">{{ run.year_spec|join:"; " }}</td>
+                {% if not forloop.last %}</tr>{% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

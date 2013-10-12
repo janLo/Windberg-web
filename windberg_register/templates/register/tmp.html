@@ -1,0 +1,60 @@
+
+
+{% extends "test.html" %}
+{% load cms_tags staticfiles menu_tags sekizai_tags bootstrap3 dajaxice_templatetags %}
+
+
+
+{% block real_content %}
+    {% addtoblock "css" %}
+        {{ form.media.css }}
+    {% endaddtoblock %}
+    {% addtoblock "js_in_header" %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>{{ form.media.js }}
+        {% dajaxice_js_import %}
+        <script src="{% static "dajax/jquery.dajax.core.js" %}"></script>
+    {% endaddtoblock %}
+    <h1>Anmeldung</h1>
+
+    <form action="{% url "windberg_register_process" %}" method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% bootstrap_form form layout="horizontal" %}
+
+        {% buttons %}
+            <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-success">
+                {% bootstrap_icon "ok" %} Anmelden
+            </button>
+            <button type="cancel" class="btn">
+                {% bootstrap_icon "remove" %} Zurücksetzen
+            </button>
+            </div>
+        {% endbuttons %}
+
+
+    </form>
+
+    {% addtoblock "js" %}
+        <script>
+        $(function () {
+            var $gendr = $("#id_gender");
+            $gendr.on("change", function(ev) {
+                update_starts(null);
+            });
+        });
+        function update_starts(birth) {
+            var $genderfield = $("#id_gender");
+            var gender = $genderfield.val()
+            if (birth == null) {
+                var $birthfield = $("#id_birth");
+                birth = $birthfield.val()
+            }
+            if (gender === "" || birth === "") {
+                return;
+            }
+
+            Dajaxice.windberg_register.lookup_starts(Dajax.process,{'birth':birth, 'gender': gender})
+        }
+        </script>
+    {% endaddtoblock %}
+{% endblock %}
