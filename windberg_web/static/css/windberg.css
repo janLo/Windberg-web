@@ -1,0 +1,104 @@
+body {
+    padding-top: 0;
+}
+
+.nav-head {
+    background-color: #82a304;
+    color: #e3ebb2;
+    padding-top: 5px;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.nav-head a {
+    color: white;
+}
+
+.nav-head hr {
+    border-top: 1px solid #e3ebb2;
+    border-bottom: 1px solid #e3ebb2;
+}
+
+.jumbotron {
+    background-color: inherit;
+    padding-top: 0;
+}
+
+.jumbotron h1 {
+    font-size: 70px;
+    line-height: 1;
+    color: #fff;
+}
+
+.jumbotron h2 {
+    line-height: 1;
+    padding-bottom: 1em;
+    color: #fff;
+}
+
+.jumbotron p {
+    color: #e3ebb2;
+    font-size: .8em;
+}
+
+
+.jumbotron .btn:hover {
+    background-color: #eaf2b8;
+}
+
+.jumbotron .btn {
+    background-color: #E7ECC5;
+    color: #82a304;
+    margin-bottom: 10px;
+}
+
+.nav-head h3.muted, .nav-head h3.muted a {
+    color: #e3ebb2;
+    padding-bottom: 5px;
+    text-decoration: none;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover {
+    background-color: #e3ebb2;
+    color: #82a304;
+}
+
+.nav-pills a {
+    color: #e3ebb2;
+}
+
+.nav-pills a:hover {
+    color: #82a304;
+}
+
+.shadow {
+    background: url("../img/shadow.png") repeat-x;
+    padding-top: 10px;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+#footer img {
+    max-height: 70px;
+    max-width: 70px;
+}
+
+#footer .row {
+   padding-top: 5px;
+}
+
+table.starttable {
+    width: 90%;
+    margin-left: 5%;
+}
+
+table.starttable tbody>tr>td {
+    border-top:none;
+}
+table.starttable tbody>tr.topborder>td {
+    border-top: 1px solid #ddd;
+}

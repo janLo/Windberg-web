@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load cms_tags menu_tags %}
+
+
+{% block base_content %}
+    <div class="nav-head">
+        <div class="container">
+            <div class="jumbotron">
+                {% placeholder landing_headline %}
+            </div>
+        </div>
+    </div>
+    <div class="shadow">
+        <div class="container">
+            {% placeholder landing_moreinfo %}
+        </div>
+    </div>
+{% endblock %}

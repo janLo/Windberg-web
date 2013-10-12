@@ -1,0 +1,15 @@
+{% extends "content_base.html" %}
+{% load cms_tags menu_tags %}
+
+
+{% block real_content %}
+<h1>Neuigkeiten</h1>
+
+{% for object in latest %}
+    <h3>{{ object.title }} <small class="text-muted">{{ object.pub_date|date:"d.M.Y" }}</small></h3>
+	<p style="font-style: italic">{{ object.excerpt|safe }}</p><p>{{ object.content|truncatewords_html:40|safe }}... <a href="{{ object.get_absolute_url }}">Read more</a></p>
+{% endfor %}
+
+<p>&nbsp;</p>
+{% endblock %}
+

@@ -1,0 +1,55 @@
+{% load cms_tags sekizai_tags staticfiles menu_tags %}
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Crosslauf Rund um den Windberg</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/jumbotron-narrow.css" %}" rel="stylesheet">
+    <link href="{% static "css/sticky-footer.css" %}" rel="stylesheet">
+    <link href="{% static "css/windberg.css" %}" rel="stylesheet">
+    {% render_block "css" %}
+    {% render_block "js_in_header" %}
+
+</head>
+<body>
+{% cms_toolbar %}
+<div id="wrap">
+
+    <div class="nav-head">
+        <div class="container">
+
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    {% show_menu 0 0 %}
+                </ul>
+                <!--h3 class="text-muted"><a href="{% page_url "start" %}">Rund um den Windberg</a></h3-->
+                <h3 class="muted"><a href="{% page_url "start" %}">Rund um den Windberg</a></h3>
+            </div>
+        </div>
+    </div>
+
+    {% block base_content %}{% endblock %}
+</div>
+<div id="footer">
+    <div class="container">
+        {% block footer %}
+        {% placeholder footer %}
+        {% endblock %}
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+{% render_block "js" %}
+</body>
+</html>
