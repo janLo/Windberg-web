@@ -207,3 +207,8 @@ LOGGING = {
 BOOTSTRAP3 = {
     'horizontal_field_class': 'col-md-6',
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

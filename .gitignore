@@ -1,2 +1,3 @@
 *.pyc
+windberg_web/local_settings.py
 .idea/workspace.xml
