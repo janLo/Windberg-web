@@ -108,4 +108,6 @@ div.container.content {
 
 div.sponsors img {
     max-width: 97%;
+    badding-top: 10px;
+    padding-bottom: 10px;
 }
