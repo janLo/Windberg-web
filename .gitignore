@@ -1,3 +1,4 @@
 *.pyc
 windberg_web/local_settings.py
+windberg_web/testdata.sqlite
 .idea/workspace.xml
