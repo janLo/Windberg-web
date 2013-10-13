@@ -36,7 +36,8 @@ class AppointmentForm(forms.ModelForm):
                                          "minViewMode": "days"},
                                 attrs={"readonly": True, }, on_change="update_starts"))
     email = forms.EmailField()
-    comment = forms.CharField(label="Anmerkungen", widget=forms.Textarea(attrs={"rows": "3"}))
+    comment = forms.CharField(label="Anmerkungen", widget=forms.Textarea(attrs={"rows": "3"}),
+                              required=False)
 
     class Meta:
         model = Starter
