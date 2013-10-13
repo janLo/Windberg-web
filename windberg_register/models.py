@@ -206,3 +206,6 @@ class Starter(models.Model):
 
     def get_age_groups(self, for_date):
         return AgeGroup.select_from_birth(self.birth, self.gender, for_date)
+
+    def __unicode__(self):
+        return u"%s, %s - %s (%s)" % (self.name, self.given, self.email, self.comment)
