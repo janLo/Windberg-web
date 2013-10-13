@@ -1,5 +1,5 @@
 {% for sponsor in sponsors %}
     {% if forloop.counter0|divisibleby:3 %}<div class="row sponsors">{% endif %}
     <div class="col-md-4"><a href="{{ sponsor.url }}" title="{{ sponsor.name }}"><img src="{{ MEDIA_URL }}{{ sponsor.image }}"></a> </div>
-    {% if forloop.counter|add:1|divisibleby:3 or forloop.last %}</div>{% endif %}
+    {% if forloop.counter|add:2|divisibleby:3 or forloop.last %}</div>{% endif %}
 {% endfor %}
