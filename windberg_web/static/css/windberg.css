@@ -105,3 +105,7 @@ table.starttable tbody>tr.topborder>td {
 div.container.content {
     padding-bottom: 20px;
 }
+
+div.sponsors img {
+    max-width: 100%;
+}
