@@ -15,7 +15,7 @@ class StartsTablePlugin(CMSPluginBase):
         if version is None:
             context['starts'] = []
         else:
-            context['starts'] = version.starts.all()
+            context['starts'] = version.starts.order_by('start_time').all()
         return context
 
 plugin_pool.register_plugin(StartsTablePlugin)

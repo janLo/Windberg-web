@@ -21,7 +21,7 @@ class PreSelectField(forms.CharField):
 def run_queryset():
     version = Version.current_active()
     if version:
-        return version.starts
+        return Start.objects.filter(version=version).order_by('start_time').all()
     return None
 
 
