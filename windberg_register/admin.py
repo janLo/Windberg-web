@@ -1,5 +1,7 @@
+# coding=utf-8
 import codecs
 from collections import defaultdict
+from dateutil.relativedelta import relativedelta
 from django.http import HttpResponse
 import unicodecsv
 import xlwt
@@ -90,7 +92,28 @@ class _ExcelWriter(object):
         self.save()
 
 
-admin.site.register(models.AgeGroup)
+class AgeGroupAdmin(admin.ModelAdmin):
+    model = models.AgeGroup
+    list_display = ["short", "gender", "min_age", "max_age", "current_range", "name", "is_pseudo", "is_detail"]
+
+    def current_range(self, obj):
+        actual_version = models.Version.current_active()
+        if not actual_version:
+            return u"n/a"
+
+        min_year = actual_version.date - relativedelta(years=obj.max_age)
+        max_year = actual_version.date - relativedelta(years=obj.min_age)
+        if min_year == max_year:
+            return u"%d" % min_year.year
+        elif obj.max_age > 100:
+            return u"ab %d" % max_year.year
+        else:
+            return "%d - %d" % (min_year.year, max_year.year)
+
+    current_range.short_description = u"aktuelle Jahrgänge"
+
+
+admin.site.register(models.AgeGroup, AgeGroupAdmin)
 admin.site.register(models.Club)
 admin.site.register(models.Run)
 admin.site.register(models.Start)
