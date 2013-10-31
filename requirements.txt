@@ -16,3 +16,4 @@ python-dateutil==2.1
 six==1.4.1
 wsgiref==0.1.2
 unicodecsv==0.9.4
+xlwt==0.7.5
