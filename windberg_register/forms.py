@@ -26,7 +26,7 @@ def run_queryset():
 
 
 class AppointmentForm(forms.ModelForm):
-    club = PreSelectField(model=Club, max_length=30, label=u"Verein",
+    club = PreSelectField(model=Club, max_length=200, label=u"Verein",
                           widget=CompleterWidget(dajax_endpoint="windberg_register.complete_clubs"))
     runs = StartChoiceField(queryset=run_queryset(), widget=TableSelectMultiple, label="Starts")
     birth = forms.DateField(input_formats=("%d.%M.%Y",),
