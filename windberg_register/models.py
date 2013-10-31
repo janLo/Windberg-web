@@ -207,5 +207,9 @@ class Starter(models.Model):
     def get_age_groups(self, for_date):
         return AgeGroup.select_from_birth(self.birth, self.gender, for_date)
 
+    def actual_age_group(self):
+        return AgeGroup.select_from_birth_qry(self.birth, self.gender, self.version.date).filter(is_pseudo=False).get()
+    actual_age_group.short_description = u"Ak"
+
     def __unicode__(self):
         return u"%s, %s - %s (%s)" % (self.name, self.given, self.email, self.comment)

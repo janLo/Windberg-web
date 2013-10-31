@@ -279,6 +279,12 @@
       <index name="cms_title_f52cfca0" unique="true" columns="slug"/>
       <index name="cms_title_784efa61" unique="true" columns="language"/>
     </table>
+    <table name="cmsplugin_categoryplugin" schema="" catalog="" type="TABLE">
+      <column name="cmsplugin_ptr_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
+      <column name="category_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="cmsplugin_ptr_id"/>
+      <index name="cmsplugin_categoryplugin_6f33f001" unique="true" columns="category_id"/>
+    </table>
     <table name="cmsplugin_file" schema="" catalog="" type="TABLE">
       <column name="cmsplugin_ptr_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
       <column name="file" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
@@ -454,22 +460,16 @@
       <index name="windberg_register_start_runs_start_id__run_id" unique="true" columns="start_id,run_id"/>
     </table>
     <table name="windberg_register_starter" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="given" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="birth" sqlType="DATE" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="club_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="gender" sqlType="VARCHAR(1)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="email" sqlType="VARCHAR(75)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="adress" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="town_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="zipno" sqlType="VARCHAR(5)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <column name="comment" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="given" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="VARCHAR(1)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="club_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
       <column name="version_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
+      <column name="email" sqlType="VARCHAR(75)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="birth" sqlType="DATE" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
-      <index name="windberg_register_starter_f516c2b3" unique="true" columns="version_id"/>
-      <index name="windberg_register_starter_850831a2" unique="true" columns="town_id"/>
-      <index name="windberg_register_starter_887dd7e4" unique="true" columns="club_id"/>
     </table>
     <table name="windberg_register_starter_runs" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
@@ -480,16 +480,10 @@
       <index name="windberg_register_starter_runs_be68b8c5" unique="true" columns="starter_id"/>
       <index name="windberg_register_starter_runs_starter_id__run_id" unique="true" columns="starter_id,run_id"/>
     </table>
-    <table name="windberg_register_town" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <primary-key columns="id"/>
-    </table>
     <table name="windberg_register_version" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
       <column name="date" sqlType="DATE" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="post_end" sqlType="DATE" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <column name="net_end" sqlType="DATE" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
     </table>
     <table name="windberg_register_version_starts" schema="" catalog="" type="TABLE">
@@ -502,15 +496,15 @@
       <index name="windberg_register_version_starts_version_id__start_id" unique="true" columns="version_id,start_id"/>
     </table>
     <table name="windberg_sponsors_sponsor" schema="" catalog="" type="TABLE">
-      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
-      <column name="name" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="category_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
+      <column name="description" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <column name="url" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <column name="image" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
-      <column name="description" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
+      <column name="small_image" sqlType="VARCHAR(100)" length="2000000000" precision="10" nullable="true" jdbcType="12"/>
       <column name="active" sqlType="BOOL" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
+      <column name="category_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>
+      <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(200)" length="2000000000" precision="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <index name="windberg_sponsors_sponsor_6f33f001" unique="true" columns="category_id"/>
     </table>
     <table name="windberg_sponsors_sponsorcategory" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4"/>

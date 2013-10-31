@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="277857922">
+  <component name="DataSourceManagerImpl" format="xml" hash="3410968268">
     <data-source source="LOCAL" name="Django default" uuid="2cd95022-4c0e-448e-b272-4bfabe3894b1">
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/windberg_web/testdata.sqlite</jdbc-url>
