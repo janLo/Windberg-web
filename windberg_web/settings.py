@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'dajax',
     'windberg_sponsors',
     'windberg_register',
+    'windberg_results',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
