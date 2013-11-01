@@ -9,7 +9,7 @@
         <h3>{{ table.name }}
             <small>Start: {{ table.start_time|time:"H:i" }}</small>
         </h3>
-        {% with table=object entries=object.entries.all|slice:":3" %}
+        {% with table=object entries=table.entries.all|slice:":3" %}
             {% include "results/_result_table.html" %}
         {% endwith %}
         <p><a href="{% url 'windberg_slug_results' year=table.version.date.year slug=table.slug %}">alle anzeigen...</a>
