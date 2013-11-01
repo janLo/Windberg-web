@@ -23,7 +23,7 @@
                 <td>{{ entry.rank_age }}</td>{% endif %}
             {% if table.use_gender %}
                 <td>{{ entry.rank_sex }}</td>{% endif %}
-            <td>{{ entry.result_time }}</td>
+            <td>{{ entry.result_time|time:"H:i:s" }}</td>
         </tr>
     {% endfor %}
     </tbody>
