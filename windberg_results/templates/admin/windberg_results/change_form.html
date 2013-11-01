@@ -1,0 +1,7 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}{{ block.super }}
+{% if change %}<li><a href="{%  url "admin:import_result_csv" year=original.version.date.year slug=original.slug %}">{% trans "Import CSV" %}</a></li>{% endif %}
+{% endblock %}
+

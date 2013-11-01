@@ -1,0 +1,13 @@
+{% extends "content_base.html" %}
+{% load cms_tags menu_tags sekizai_tags %}
+
+
+{% block real_content %}
+    <h1>Ergebnislisten für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
+    <h2>{{ object.name }}
+        <small>Start: {{ object.start_time|time:"H:i" }}</small>
+    </h2>
+    {% with table=object entries=object.entries.all %}
+        {% include "results/_result_table.html" %}
+    {% endwith %}
+{% endblock %}

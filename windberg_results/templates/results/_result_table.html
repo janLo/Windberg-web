@@ -1,0 +1,30 @@
+<table class="table table-condensed">
+    <thead>
+    <tr>
+        <th>Platz</th>
+        <th>Name</th>
+        <th>Vorname</th>
+        <th>Altersklasse</th>
+        {% if table.use_age_group %}
+            <th>Platz Ak</th>{% endif %}
+        {% if table.use_gender %}
+            <th>Platz M/W</th>{% endif %}
+        <th>Zeit</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for entry in entries %}
+        <tr>
+            <td>{{ entry.rank }}</td>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.given }}</td>
+            <td>{{ entry.age_group }}</td>
+            {% if table.use_age_group %}
+                <td>{{ entry.rank_age }}</td>{% endif %}
+            {% if table.use_gender %}
+                <td>{{ entry.rank_sex }}</td>{% endif %}
+            <td>{{ entry.result_time }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
