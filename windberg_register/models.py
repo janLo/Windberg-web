@@ -166,6 +166,25 @@ class Version(models.Model):
             return None
         return latest.id
 
+    @staticmethod
+    def by_year(year):
+        """Find a specific version by year.
+
+        It returns None if none found.
+
+        :param year: The year (as int) to search for.
+        :type year: int
+        :rtype: Version or None
+        :return: The version or none.
+        """
+        search_start = datetime.date(year=year, month=1, day=1)
+        search_end = datetime.date(year=year, month=12, day=31)
+        qry = Version.objects.filter(date__gte=search_start, date__lte=search_end)
+        try:
+            return qry.get()
+        except Version.MultipleObjectsReturned or Version.DoesNotExist:
+            return None
+
 
 class SimpleNameModelMixin(models.Model):
     name = models.CharField(max_length=200)
