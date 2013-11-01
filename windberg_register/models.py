@@ -137,9 +137,12 @@ class Start(models.Model):
 
 
 class Version(models.Model):
-    date = models.DateField()
-    net_end = models.DateField()
-    starts = models.ManyToManyField(Start)
+    class Meta:
+        ordering = ["-date"]
+
+    date = models.DateField(verbose_name=u"Veranstaltungsdatum")
+    net_end = models.DateField(verbose_name=u"Meldeschluss(Netz)")
+    starts = models.ManyToManyField(Start, verbose_name=u"Zugeordnete Starts")
 
     def _sub_date(self, diff):
         return self.date - datetime.timedelta(days=diff)
@@ -221,7 +224,7 @@ class Starter(models.Model):
     email = models.EmailField(verbose_name=u"E-Mail", blank=True)
     comment = models.TextField(verbose_name=u"Anmerkungen", blank=True)
     runs = models.ManyToManyField(Run, verbose_name=u"Starts")
-    version = models.ForeignKey(Version, default=Version.current_active_id)
+    version = models.ForeignKey(Version, default=Version.current_active_id, related_name="starters")
 
     def get_age_groups(self, for_date):
         return AgeGroup.select_from_birth(self.birth, self.gender, for_date)

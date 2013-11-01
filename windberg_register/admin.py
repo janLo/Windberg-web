@@ -113,9 +113,28 @@ class AgeGroupAdmin(admin.ModelAdmin):
     current_range.short_description = u"aktuelle Jahrgänge"
 
 
+class VersionAdmin(admin.ModelAdmin):
+    model = models.Version
+    list_display = ["_number", "date", "net_end", "_start_count", "_starters_count"]
+
+    def _number(self, obj):
+        return "%d Windberglauf" % obj.number
+    _number.short_description = u"Auflage"
+
+    def _start_count(self, obj):
+        return obj.starts.count()
+    _start_count.short_description = u"Starts"
+
+    def _starters_count(self, obj):
+        return obj.starters.count()
+    _starters_count.short_description = u"Meldungen"
+
+
+
+
 admin.site.register(models.AgeGroup, AgeGroupAdmin)
 admin.site.register(models.Club)
 admin.site.register(models.Run)
 admin.site.register(models.Start)
 admin.site.register(models.Starter, StarterAdmin)
-admin.site.register(models.Version)
+admin.site.register(models.Version, VersionAdmin)
