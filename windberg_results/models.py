@@ -35,5 +35,5 @@ class ResultEntry(models.Model):
     club = models.CharField(verbose_name=u"Club", max_length=200)
     rank = models.IntegerField(verbose_name=u"Platz")
     rank_age = models.IntegerField(verbose_name=u"Platz AK")
-    rank_sex = models.IntegerField(verbose_name=u"Platz Geschl.")
+    rank_sex = models.IntegerField(verbose_name=u"Platz Geschl.", null=True)
     result_time = models.TimeField(u"Ergebniszeit")
