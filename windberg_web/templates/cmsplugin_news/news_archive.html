@@ -3,13 +3,23 @@
 
 
 {% block real_content %}
-<h1 class="page-header">Neuigkeiten</h1>
+    <h1 class="page-header">Neuigkeiten</h1>
 
-{% for object in latest %}
-    <h3>{{ object.title }} <small class="text-muted">{{ object.pub_date|date:"d.M.Y" }}</small></h3>
-	<p style="font-style: italic">{{ object.excerpt|safe }}</p><p>{{ object.content|truncatewords_html:40|safe }}... <a href="{{ object.get_absolute_url }}">Alles lesen</a></p>
-{% endfor %}
+    {% for object in latest %}
+        <div class="well result-preview">
+            <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
 
-<p>&nbsp;</p>
+            <p class="text-muted">
+                <small>Veröffentlicht: <strong>{{ object.pub_date|date:"d.M.Y" }}</strong></small>
+            </p>
+            <p style="font-style: italic">{{ object.excerpt|safe }}</p>
+            {{ object.content|truncatewords_html:40|safe }}
+            {% ifnotequal object.content|truncatewords_html:40|safe|length object.content|truncatewords_html:41|safe|length %}
+                <p><a href="{{ object.get_absolute_url }}">Alles lesen</a></p>
+            {% endifnotequal %}
+        </div>
+    {% endfor %}
+
+    <p>&nbsp;</p>
 {% endblock %}
 
