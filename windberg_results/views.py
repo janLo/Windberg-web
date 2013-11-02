@@ -17,7 +17,7 @@ class ResultListingRedirectView(RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        version = Version.objects.values("date").annotate(result_tables=Count("resulttable__id")).filter(
+        version = Version.objects.values("date").annotate(result_tables=Count("resulttables__id")).filter(
             result_tables__gt=0).order_by('-date')
         if not version:
             return reverse("windberg_no_results")
