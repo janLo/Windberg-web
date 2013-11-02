@@ -63,6 +63,13 @@ def _drop_value(value):
     return []
 
 
+def _upper_keys(dict_table):
+    new_dict = {}
+    for item in dict_table:
+        new_dict[item.upper()] = dict_table[item]
+    return new_dict
+
+
 _convert_table = {u"Platz": int,
                   u"Plm": _int_or_None,
                   u"Plw": _int_or_None,
@@ -75,10 +82,11 @@ _convert_table = {u"Platz": int,
                   u"AKw": _int_or_None,
                   u"Endzeit": _parse_time,
                   u"Rückst.": _parse_time}
+_convert_table = _upper_keys(_convert_table)
 
 _map_table = {u"Platz": _rename_to("rank"),
               u"Plm": _make_gender_rank_processor("M"),
-              u"Plw": _make_gender_rank_processor("W"),
+              u"Plw": _make_gender_rank_processor("F"),
               u"Stnr.": _rename_to("start_number"),
               u"Name,Vorname": _process_name,
               u"Verein": _rename_to("club"),
@@ -88,6 +96,7 @@ _map_table = {u"Platz": _rename_to("rank"),
               u"AKw": _process_age_rank,
               u"Endzeit": _rename_to("result_time"),
               u"Rückst.": _drop_value}
+_map_table = _upper_keys(_map_table)
 
 
 class UploadedResultFile(object):
@@ -121,9 +130,10 @@ class UploadedResultFile(object):
         for field in line:
             if not field:
                 continue
-            if field not in _convert_table:
+            lookup = _convert_text(field).upper()
+            if lookup not in _convert_table:
                 continue
-            converted = _convert_table[field](line[field])
-            mapped = _map_table[field](converted)
+            converted = _convert_table[lookup](line[field])
+            mapped = _map_table[lookup](converted)
             cleaned.extend(mapped)
         return dict(cleaned)

@@ -77,7 +77,6 @@ def import_entries_from_csv(request, year, slug):
 
     if request.method == "POST":
         form = forms.CsvImportForm(request.POST, request.FILES)
-        print "peng"
         if form.is_valid():
             with UploadedResultFile(request.FILES["import_file"]) as import_file:
                 with transaction.commit_on_success():
