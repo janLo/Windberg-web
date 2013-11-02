@@ -6,7 +6,7 @@
 
     <h1 class="page-header">Ergebnislisten für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
     {% for table in object_list %}
-        <h3>{{ table.name }}
+        <h3 style="padding-top: .8em">{{ table.name }}
             <small>Start: {{ table.start_time|time:"H:i" }}</small>
         </h3>
         {% with table=object entries=table.entries.all|slice:":3" %}
