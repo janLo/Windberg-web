@@ -26,7 +26,7 @@
                 <small>Ergebnisse: <strong>{{ table.entries.count }}</strong> | Start:
                     <strong>{{ table.start_time|time:"H:i" }}</strong></small>
             </p>
-            {% with table=object entries=table.entries.all|slice:":3" %}
+            {% with table=table entries=table.entries.all|slice:":3" %}
                 {% include "results/_result_table.html" %}
             {% endwith %}
             <p><a href="{% url 'windberg_slug_results' year=table.version.date.year slug=table.slug %}">alle
