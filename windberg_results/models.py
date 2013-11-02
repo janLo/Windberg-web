@@ -30,7 +30,7 @@ class ResultEntry(models.Model):
     start_number =models.IntegerField(verbose_name=u"Startnummer")
     gender = models.CharField(verbose_name=u"Geschlecht", choices=windberg_register.models.Starter.GENDER_CHOICES,
                               max_length=20)
-    birth_year = models.DateField(verbose_name=u"GJ")
+    birth_year = models.DateField(verbose_name=u"GJ", null=True)
     age_group = models.CharField(verbose_name=u"AK", max_length=100)
     club = models.CharField(verbose_name=u"Club", max_length=200)
     rank = models.IntegerField(verbose_name=u"Platz")

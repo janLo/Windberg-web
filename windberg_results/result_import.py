@@ -48,6 +48,8 @@ def _process_name(value):
 
 
 def _make_birth_year(value):
+    if value is None:
+        return [("birth_year", None)]
     return [("birth_year", datetime.date(year=value, month=1, day=1))]
 
 
@@ -67,7 +69,7 @@ _convert_table = {u"Platz": int,
                   u"Stnr.": int,
                   u"Name,Vorname": _convert_text,
                   u"Verein": _convert_text,
-                  u"GJ": int,
+                  u"GJ": _int_or_None,
                   u"AK": _convert_text,
                   u"AKm": _int_or_None,
                   u"AKw": _int_or_None,
