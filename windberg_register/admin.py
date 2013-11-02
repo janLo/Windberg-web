@@ -118,7 +118,7 @@ class VersionAdmin(admin.ModelAdmin):
     list_display = ["_number", "date", "net_end", "_start_count", "_starters_count"]
 
     def _number(self, obj):
-        return "%d Windberglauf" % obj.number
+        return u"%d Windberglauf" % obj.number
     _number.short_description = u"Auflage"
 
     def _start_count(self, obj):
@@ -130,11 +130,24 @@ class VersionAdmin(admin.ModelAdmin):
     _starters_count.short_description = u"Meldungen"
 
 
+class StartAdmin(admin.ModelAdmin):
+    model = models.Start
+    list_display = ["start_time", "_run_count", "_current"]
 
+    def _run_count(self, obj):
+        return obj.runs.count()
+    _run_count.short_description = u"Wertungen"
+
+    def _current(self, obj):
+        version = models.Version.current_active()
+        if not version:
+            return False
+        return version.starts.filter(id=obj.id).count() > 0
+    _current.short_description = u"aktuell zugewiesen"
 
 admin.site.register(models.AgeGroup, AgeGroupAdmin)
 admin.site.register(models.Club)
 admin.site.register(models.Run)
-admin.site.register(models.Start)
+admin.site.register(models.Start, StartAdmin)
 admin.site.register(models.Starter, StarterAdmin)
 admin.site.register(models.Version, VersionAdmin)
