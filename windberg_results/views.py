@@ -66,7 +66,6 @@ class ResultTableDefaultView(DetailView, VersionBasedViewMixin):
         context["version"] = self.version
         return context
 
-from pprint import pprint
 
 @staff_member_required
 def import_entries_from_csv(request, year, slug):
@@ -83,7 +82,6 @@ def import_entries_from_csv(request, year, slug):
             with UploadedResultFile(request.FILES["import_file"]) as import_file:
                 with transaction.commit_on_success():
                     for entry in import_file:
-                        pprint(entry)
                         models.ResultEntry.objects.create(table=table, **entry)
 
             return redirect('admin:windberg_results_resulttable_change', table.id )
