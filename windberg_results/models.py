@@ -12,6 +12,7 @@ class ResultTable(models.Model):
 
     version = models.ForeignKey(windberg_register.models.Version,
                                 verbose_name=u"Laufversion",
+                                related_name=u"resulttables",
                                 default=windberg_register.models.Version.current_active_id)
     name = models.CharField(verbose_name=u"Tabellenname", max_length=200)
     slug = models.SlugField(verbose_name=u"Kürzel")
