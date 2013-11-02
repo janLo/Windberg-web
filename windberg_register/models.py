@@ -105,6 +105,9 @@ class Run(models.Model):
 
 
 class Start(models.Model):
+    class Meta:
+        ordering = ["start_time", "-creation_date"]
+
     creation_date = models.DateField(auto_now=True)
     start_time = models.TimeField()
     runs = models.ManyToManyField(Run)
