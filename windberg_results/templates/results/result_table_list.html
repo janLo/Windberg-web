@@ -7,9 +7,8 @@
     <h1 class="page-header">Ergebnislisten für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
     {% for table in object_list %}
         <div class="well result-preview">
-        <h3>{{ table.name }}
-            <small>Start: {{ table.start_time|time:"H:i" }}</small>
-        </h3>
+        <h3>{{ table.name }}</h3>
+        <p class="text-muted"><small>Ergebnisse: <strong>{{ table.entries.count }}</strong> | Start: <strong>{{ table.start_time|time:"H:i" }}</strong></small></p>
         {% with table=object entries=table.entries.all|slice:":3" %}
             {% include "results/_result_table.html" %}
         {% endwith %}

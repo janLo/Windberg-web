@@ -5,8 +5,9 @@
 {% block real_content %}
     <h1 class="page-header">Ergebnisliste für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
     <h2>{{ object.name }}
-        <small>Start: {{ object.start_time|time:"H:i" }}</small>
+
     </h2>
+    <p class="text-muted"><small>Ergebnisse: <strong>{{ object.entries.count }}</strong> | Start: <strong>{{ object.start_time|time:"H:i" }}</strong></small></p>
     {% with table=object entries=object.entries.all %}
         {% include "results/_result_table.html" %}
     {% endwith %}
