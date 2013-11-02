@@ -14,6 +14,7 @@ class ResultTableAdmin(admin.ModelAdmin):
     model = models.ResultTable
     inlines = [ResultEntryInlineAdmin]
     list_display = ("_version_name", "start_time", "name", "use_age_group", "use_gender")
+    prepopulated_fields = {"slug": ("name",)}
 
     def get_urls(self):
         def wrap(view):
