@@ -43,7 +43,6 @@ body {
     font-size: .8em;
 }
 
-
 .jumbotron .btn:hover {
     background-color: #eaf2b8;
 }
@@ -88,17 +87,18 @@ h3 {
 }
 
 #footer .row {
-   padding-top: 5px;
+    padding-top: 5px;
 }
 
 table {
     font-size: 14px;
 }
 
-table.starttable tbody>tr>td {
-    border-top:none;
+table.starttable tbody > tr > td {
+    border-top: none;
 }
-table.starttable tbody>tr.topborder>td {
+
+table.starttable tbody > tr.topborder > td {
     border-top: 1px solid #ddd;
 }
 
@@ -110,4 +110,16 @@ div.sponsors img {
     max-width: 97%;
     padding-top: 20px;
     padding-bottom: 30px;
+}
+
+div.result-preview {
+    margin-top: 20px;
+    background-color: #fcfdfa;
+    padding: 0 10px 1px 10px
+}
+
+div.result-preview h3 {
+    margin: 0 -10px 10px -10px;
+    padding: 10px 10px 3 10px;
+    border-bottom: 1px solid #e3e3e3
 }

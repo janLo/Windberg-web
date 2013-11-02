@@ -6,7 +6,8 @@
 
     <h1 class="page-header">Ergebnislisten für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
     {% for table in object_list %}
-        <h3 style="padding-top: .8em">{{ table.name }}
+        <div class="well result-preview">
+        <h3>{{ table.name }}
             <small>Start: {{ table.start_time|time:"H:i" }}</small>
         </h3>
         {% with table=object entries=table.entries.all|slice:":3" %}
@@ -14,5 +15,6 @@
         {% endwith %}
         <p><a href="{% url 'windberg_slug_results' year=table.version.date.year slug=table.slug %}">alle anzeigen...</a>
         </p>
+        </div>
     {% endfor %}
 {% endblock %}
