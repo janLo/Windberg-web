@@ -3,11 +3,12 @@
 
 
 {% block real_content %}
-    <h1>Ergebnislisten für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
+    <h1 class="page-header">Ergebnisliste für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
     <h2>{{ object.name }}
         <small>Start: {{ object.start_time|time:"H:i" }}</small>
     </h2>
     {% with table=object entries=object.entries.all %}
         {% include "results/_result_table.html" %}
     {% endwith %}
+    <p><a href="{% url "windberg_version_results" year=version.date.year %}">zurück</a></p>
 {% endblock %}

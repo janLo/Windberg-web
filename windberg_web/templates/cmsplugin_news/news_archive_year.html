@@ -4,7 +4,7 @@
 
 {% block real_content %}
 
-<h1>News for {{ year }}</h1>
+<h1 class="page-header">News for {{ year }}</h1>
 <ul>
     {% for date in date_list %}
         <li><a href="{% url "news_archive_month" year=year|date:'Y' month=date|date:'m'  %}">{{ date|date:"F" }}</a></li>

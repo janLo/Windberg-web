@@ -3,7 +3,7 @@
 
 
 {% block real_content %}
-<h1>Neuigkeiten</h1>
+<h1 class="page-header">Neuigkeiten</h1>
 
 {% for object in latest %}
     <h3>{{ object.title }} <small class="text-muted">{{ object.pub_date|date:"d.M.Y" }}</small></h3>

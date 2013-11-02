@@ -3,7 +3,7 @@
 
 
 {% block real_content %}
-    <h1>{{ object.title }}</h1>
+    <h1 class="page-header">{{ object.title }}</h1>
 
     <p><span class="date text-muted">{{ object.pub_date|date:"d.M.Y" }}</span><br/>
         <span style="font-style: italic">{{ object.excerpt|safe }}</span></p>

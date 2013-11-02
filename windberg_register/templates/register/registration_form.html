@@ -12,7 +12,7 @@
         {% dajaxice_js_import %}
         <script src="{% static "dajax/jquery.dajax.core.js" %}"></script>
     {% endaddtoblock %}
-    <h1>Anmeldung</h1>
+    <h1 class="page-header">Anmeldung</h1>
 
     <form action="{% url "windberg_register_process" %}" method="post" class="form-horizontal">
         {% csrf_token %}
