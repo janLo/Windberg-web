@@ -44,6 +44,13 @@ class ResultTableListView(ListView, VersionBasedViewMixin):
     def get_context_data(self, **kwargs):
         context = super(ResultTableListView, self).get_context_data(**kwargs)
         context["version"] = self.version
+        prev_version = Version.objects.filter(date__lt=self.version.date).order_by("-date")
+        if prev_version.count() > 0:
+            context["prev"] = prev_version.all()[0]
+        next_version = Version.objects.filter(date__gt=self.version.date).order_by("date")
+        if next_version.count() > 0:
+            context["next"] = next_version.all()[0]
+
         return context
 
 

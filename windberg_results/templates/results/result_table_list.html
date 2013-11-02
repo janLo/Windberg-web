@@ -5,9 +5,22 @@
 {% block real_content %}
 
     <h1 class="page-header">Ergebnislisten für den {{ version.number }}. Windberglauf {{ version.date.year }}</h1>
+    <div class="clearfix">
+        {% if prev %}
+            <small><a href="{% url "windberg_version_results" year=prev.date.year %}"><span
+                class="glyphicon glyphicon-arrow-left"></span> {{ prev.number }}. Lauf ({{ prev.date.year }})</a>
+            </small>{% endif %}
+        {% if next %}
+            <div class="pull-right">
+            <small><a href="{% url "windberg_version_results" year=next.date.year %}">{{ next.number }}. Lauf
+                ({{ next.date.year }}) <span class="glyphicon glyphicon-arrow-right"></span></a></small>
+            </div>{% endif %}
+    </div>
     {% for table in object_list %}
         <div class="well result-preview">
-            <h3><a href="{% url 'windberg_slug_results' year=table.version.date.year slug=table.slug %}">{{ table.name }}</a></h3>
+            <h3>
+                <a href="{% url 'windberg_slug_results' year=table.version.date.year slug=table.slug %}">{{ table.name }}</a>
+            </h3>
 
             <p class="text-muted">
                 <small>Ergebnisse: <strong>{{ table.entries.count }}</strong> | Start:
