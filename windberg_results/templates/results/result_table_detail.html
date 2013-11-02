@@ -11,5 +11,5 @@
     {% with table=object entries=object.entries.all %}
         {% include "results/_result_table.html" %}
     {% endwith %}
-    <p><a href="{% url "windberg_version_results" year=version.date.year %}">zurück</a></p>
+    <p style="margin-top: 1em; border-top: 1px solid #e3e3e3"><a href="{% url "windberg_version_results" year=version.date.year %}">zurück</a></p>
 {% endblock %}

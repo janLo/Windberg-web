@@ -7,8 +7,7 @@
 
     <p><span class="date text-muted">{{ object.pub_date|date:"d.M.Y" }}</span><br/>
         <span style="font-style: italic">{{ object.excerpt|safe }}</span></p>
-    <p>
         {{ object.content|safe }}
-    </p>
+    <p style="margin-top: 1em; border-top: 1px solid #e3e3e3"><a href="{% page_url "news" %}">zurück</a></p>
 
 {% endblock %}
