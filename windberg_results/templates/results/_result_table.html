@@ -18,6 +18,7 @@
             <td>{{ entry.rank|default:"-" }}</td>
             <td>{{ entry.name }}</td>
             <td>{{ entry.given }}</td>
+            <td>{{ entry.club|default:"-" }}</td>
             <td>{{ entry.age_group|default:"-" }}</td>
             {% if table.use_age_group %}
                 <td>{{ entry.rank_age|default:"-" }}</td>{% endif %}
