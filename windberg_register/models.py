@@ -239,7 +239,7 @@ class Starter(models.Model):
             is_pseudo=False
         ).filter(
             run__start__version=self.version
-        ).get()
+        ).distinct().get()
 
     actual_age_group.short_description = u"Ak"
 
