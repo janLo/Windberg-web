@@ -233,7 +233,14 @@ class Starter(models.Model):
         return AgeGroup.select_from_birth(self.birth, self.gender, for_date)
 
     def actual_age_group(self):
-        return AgeGroup.select_from_birth_qry(self.birth, self.gender, self.version.date).filter(is_pseudo=False).get()
+        return AgeGroup.select_from_birth_qry(
+            self.birth, self.gender, self.version.date
+        ).filter(
+            is_pseudo=False
+        ).filter(
+            __start__version=self.version
+        ).get()
+
     actual_age_group.short_description = u"Ak"
 
     def __unicode__(self):
