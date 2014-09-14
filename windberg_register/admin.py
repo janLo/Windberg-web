@@ -12,6 +12,7 @@ from django.contrib import admin
 class StarterAdmin(admin.ModelAdmin):
     list_display = ("name", "given", "age_group_short", "club_name", "email", "run_list", "comment")
     list_per_page = 1000
+    list_filter = ("version",)
     actions = ['_make_excel_list', '_make_csv_list']
 
     def club_name(self, obj):
