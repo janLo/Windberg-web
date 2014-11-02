@@ -59,7 +59,10 @@ class ResultTableDefaultView(DetailView, VersionBasedViewMixin):
 
     def get_queryset(self):
         self.retrieve_version()
-        return models.ResultTable.objects.filter(slug=self.kwargs["slug"]).select_related("entries")
+        return models.ResultTable.objects.filter(
+            version__date__year=self.kwargs["year"],
+            slug=self.kwargs["slug"]
+        ).select_related("entries")
 
     def get_context_data(self, **kwargs):
         context = super(ResultTableDefaultView, self).get_context_data(**kwargs)
@@ -83,9 +86,9 @@ def import_entries_from_csv(request, year, slug):
                     for entry in import_file:
                         models.ResultEntry.objects.create(table=table, **entry)
 
-            return redirect('admin:windberg_results_resulttable_change', table.id )
+            return redirect('admin:windberg_results_resulttable_change', table.id)
         print form.errors
     else:
         form = forms.CsvImportForm({"resulttable": table.id})
 
-    return render(request, "admin/windberg_results/upload_form.html",  {'form': form})
+    return render(request, "admin/windberg_results/upload_form.html", {'form': form})
